@@ -9,7 +9,7 @@ use Wearesho\Yii\Http\Behaviors\GetParamsBehavior;
  * Class StreetsPanel
  * @package Wearesho\GoogleAutocomplete\Yii\Panels
  */
-class StreetsPanel extends AbstractPanel
+class StreetsPanel extends Panel
 {
     /** @var string|null */
     public $city;
@@ -54,7 +54,7 @@ class StreetsPanel extends AbstractPanel
         return new GoogleAutocomplete\Queries\StreetSearch(
             $this->token,
             $this->input,
-            $this->language,
+            $this->getSearchLanguage(),
             $this->city,
             $this->type,
             GoogleAutocomplete\Enums\SearchMode::SHORT()

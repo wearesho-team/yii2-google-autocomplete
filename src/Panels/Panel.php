@@ -9,7 +9,7 @@ use Wearesho\Yii\Http;
  * Class AbstractPanel
  * @package Wearesho\GoogleAutocomplete\Yii\Panels
  */
-abstract class AbstractPanel extends Http\Panel
+abstract class Panel extends Http\Panel
 {
     /** @var string */
     public $token;
@@ -56,10 +56,13 @@ abstract class AbstractPanel extends Http\Panel
                 'string',
             ],
             ['language', 'string', 'length' => 2,],
-            ['language', 'default', 'value' => \Yii::$app->language,],
-            ['language', 'filter', 'filter' => function (string $language): GoogleAutocomplete\Enums\SearchLanguage {
-                return new GoogleAutocomplete\Enums\SearchLanguage($language);
-            }]
+            [
+                'language',
+                'default',
+                'value' => function (): string {
+                    return \Yii::$app->language;
+                },
+            ],
         ];
     }
 
@@ -75,6 +78,11 @@ abstract class AbstractPanel extends Http\Panel
             ->load($this->getQuery())
             ->getResults()
             ->jsonSerialize();
+    }
+
+    protected function getSearchLanguage(): GoogleAutocomplete\Enums\SearchLanguage
+    {
+        return new GoogleAutocomplete\Enums\SearchLanguage($this->language);
     }
 
     abstract protected function getQuery(): GoogleAutocomplete\Queries\Interfaces\SearchQueryInterface;
