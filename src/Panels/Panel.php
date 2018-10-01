@@ -5,6 +5,7 @@ namespace Wearesho\GoogleAutocomplete\Yii\Panels;
 use Wearesho\GoogleAutocomplete;
 use Wearesho\Yii\Http;
 use yii\web\HttpException;
+use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * Class AbstractPanel
@@ -80,8 +81,8 @@ abstract class Panel extends Http\Panel
                 ->load($this->getQuery())
                 ->getResults()
                 ->jsonSerialize();
-        } catch (\GuzzleHttp\Exception\GuzzleException $exception) {
-            throw new HttpException(503, $exception->getMessage(), $exception->getCode(), $exception);
+        } catch (GuzzleException $exception) {
+            throw new HttpException(503, 'Google autocomplete API is unavailable', $exception->getCode(), $exception);
         }
     }
 

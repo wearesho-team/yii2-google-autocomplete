@@ -28,9 +28,6 @@
             "Wearesho\\GoogleAutocomplete\\Yii\\Tests\\": "tests/"
         }
     },
-    "classmap": [
-        "/vendor/bin/yii"
-    ],
     "minimum-stability": "stable",
     "scripts": {
         "lint": "./vendor/bin/phpcs --standard=PSR2 ./src ./tests",
