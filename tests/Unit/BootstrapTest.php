@@ -3,7 +3,6 @@
 namespace Wearesho\GoogleAutocomplete\Yii\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-
 use Wearesho\GoogleAutocomplete\Yii\Bootstrap;
 use Wearesho\GoogleAutocomplete;
 use yii\web\Application;

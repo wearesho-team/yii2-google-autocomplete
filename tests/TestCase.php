@@ -2,16 +2,11 @@
 
 namespace Wearesho\GoogleAutocomplete\Yii\Tests;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use Wearesho\GoogleAutocomplete\ConfigInterface;
-use Wearesho\GoogleAutocomplete\EnvironmentConfig;
-use Wearesho\GoogleAutocomplete\Service;
-use Wearesho\GoogleAutocomplete\ServiceInterface;
+use GuzzleHttp;
+use Wearesho\GoogleAutocomplete;
 use yii\di\Container;
 use yii\rbac\PhpManager;
-use yii\web\Application;
-use yii\web\User;
+use yii\web;
 
 /**
  * Class TestCase
@@ -22,7 +17,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /** @var string */
     protected $token;
 
-    /** @var Service */
+    /** @var GoogleAutocomplete\Service */
     protected static $autoCompleteService;
 
     /**
@@ -32,11 +27,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         \Yii::$container = new Container();
 
-        \Yii::$container->set(ConfigInterface::class, EnvironmentConfig::class);
-        \Yii::$container->set(ClientInterface::class, Client::class);
-        \Yii::$container->set(ServiceInterface::class, Service::class);
+        \Yii::$container->set(GoogleAutocomplete\ConfigInterface::class, GoogleAutocomplete\EnvironmentConfig::class);
+        \Yii::$container->set(GuzzleHttp\ClientInterface::class, GuzzleHttp\Client::class);
+        \Yii::$container->set(GoogleAutocomplete\ServiceInterface::class, GoogleAutocomplete\Service::class);
 
-        \Yii::$app = new Application([
+        \Yii::$app = new web\Application([
             'id' => 'yii-register-confirmation-test',
             'basePath' => dirname(__DIR__),
             'components' => [
@@ -47,8 +42,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
                     'ruleFile' => '@output/rule.php',
                 ],
                 'user' => [
-                    'class' => User::class,
-                    'identityClass' => User::class,
+                    'class' => web\User::class,
+                    'identityClass' => web\User::class,
                     'enableSession' => false,
                 ]
             ],

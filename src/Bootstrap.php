@@ -3,13 +3,12 @@
 namespace Wearesho\GoogleAutocomplete\Yii;
 
 use Wearesho\GoogleAutocomplete;
-use yii;
 
 /**
  * Class Bootstrap
  * @package Wearesho\GoogleAutocomplete\Yii
  */
-class Bootstrap implements yii\base\BootstrapInterface
+class Bootstrap implements \yii\base\BootstrapInterface
 {
     /**
      * @inheritdoc

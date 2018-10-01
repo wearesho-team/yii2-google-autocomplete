@@ -2,8 +2,7 @@
 
 namespace Wearesho\GoogleAutocomplete\Yii;
 
-use Wearesho\GoogleAutocomplete\Yii\Panels\CitiesPanel;
-use Wearesho\GoogleAutocomplete\Yii\Panels\StreetsPanel;
+use Wearesho\GoogleAutocomplete\Yii\Panels;
 use Wearesho\Yii\Http;
 
 /**
@@ -12,19 +11,16 @@ use Wearesho\Yii\Http;
  */
 class Controller extends Http\Controller
 {
-    public function actions(): array
-    {
-        return [
-            'streets' => [
-                'get' => [
-                    'class' => StreetsPanel::class,
-                ],
+    public $actions = [
+        'streets' => [
+            'get' => [
+                'class' => Panels\StreetsPanel::class,
             ],
-            'cities' => [
-                'get' => [
-                    'class' => CitiesPanel::class,
-                ],
+        ],
+        'cities' => [
+            'get' => [
+                'class' => Panels\CitiesPanel::class,
             ],
-        ];
-    }
+        ],
+    ];
 }

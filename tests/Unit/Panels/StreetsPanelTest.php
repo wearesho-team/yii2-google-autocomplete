@@ -4,7 +4,6 @@ namespace Wearesho\GoogleAutocomplete\Yii\Tests\Unit\Panels;
 
 use Wearesho\GoogleAutocomplete\Yii\Panels\StreetsPanel;
 use Wearesho\GoogleAutocomplete\Yii\Tests\TestCase;
-use Wearesho\Yii\Http\Request;
 
 /**
  * Class StreetsPanelTest
