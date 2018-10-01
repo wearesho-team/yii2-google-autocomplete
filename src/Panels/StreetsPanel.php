@@ -34,11 +34,7 @@ class StreetsPanel extends AbstractPanel
                 ['type', 'city',],
                 'string'
             ],
-            [
-                ['type',],
-                'filter',
-                'filter' => 'preg_quote'
-            ],
+            ['type', 'filter', 'filter' => 'preg_quote'],
         ]);
     }
 
