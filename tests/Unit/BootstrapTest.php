@@ -3,14 +3,13 @@
 namespace Wearesho\GoogleAutocomplete\Yii\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Wearesho\GoogleAutocomplete\Yii\Bootstrap;
 use Wearesho\GoogleAutocomplete;
 use yii\web\Application;
 
 /**
  * Class BootstrapTest
  * @package Wearesho\GoogleAutocomplete\Yii\Tests\Unit
- * @coversDefaultClass Bootstrap
+ * @coversDefaultClass \Wearesho\GoogleAutocomplete\Yii\Bootstrap
  * @internal
  */
 class BootstrapTest extends TestCase
