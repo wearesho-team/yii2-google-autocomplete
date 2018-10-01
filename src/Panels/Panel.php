@@ -4,6 +4,7 @@ namespace Wearesho\GoogleAutocomplete\Yii\Panels;
 
 use Wearesho\GoogleAutocomplete;
 use Wearesho\Yii\Http;
+use yii\web\HttpException;
 
 /**
  * Class AbstractPanel
@@ -70,14 +71,18 @@ abstract class Panel extends Http\Panel
      * @return array
      * @throws GoogleAutocomplete\Exceptions\InvalidResponse
      * @throws GoogleAutocomplete\Exceptions\QueryException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws HttpException
      */
     protected function generateResponse(): array
     {
-        return $this->service
-            ->load($this->getQuery())
-            ->getResults()
-            ->jsonSerialize();
+        try {
+            return $this->service
+                ->load($this->getQuery())
+                ->getResults()
+                ->jsonSerialize();
+        } catch (\GuzzleHttp\Exception\GuzzleException $exception) {
+            throw new HttpException(503, $exception->getMessage(), $exception->getCode(), $exception);
+        }
     }
 
     protected function getSearchLanguage(): GoogleAutocomplete\Enums\SearchLanguage
