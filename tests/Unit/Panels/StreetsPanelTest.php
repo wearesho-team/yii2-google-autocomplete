@@ -23,7 +23,6 @@ class StreetsPanelTest extends PanelTestCase
     {
         parent::setUp();
 
-        $this->panel = StreetsPanel::instance();
         $this->expectedRules = [
             [
                 ['token', 'input',],

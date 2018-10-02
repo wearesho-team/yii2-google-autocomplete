@@ -19,7 +19,6 @@ class CitiesPanelTest extends PanelTestCase
     {
         parent::setUp();
 
-        $this->panel = CitiesPanel::instance();
         $this->expectedRules = [
             [
                 ['token', 'input',],

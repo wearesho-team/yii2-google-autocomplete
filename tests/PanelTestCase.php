@@ -23,9 +23,6 @@ class PanelTestCase extends \PHPUnit\Framework\TestCase
     /** @var array */
     protected $expectedRules;
 
-    /** @var GoogleAutocomplete\Yii\Panels\Panel */
-    protected $panel;
-
     /** @var GoogleAutocomplete\Service */
     protected static $autoCompleteService;
 
