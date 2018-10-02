@@ -41,7 +41,7 @@ abstract class Panel extends Http\Panel
         return [
             'getBaseParams' => [
                 'class' => Http\Behaviors\GetParamsBehavior::class,
-                'attributes' => ['token', 'input',],
+                'attributes' => ['token', 'input', 'language'],
             ],
         ];
     }

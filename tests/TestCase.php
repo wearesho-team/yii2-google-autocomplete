@@ -14,8 +14,13 @@ use yii\web;
  */
 class TestCase extends \PHPUnit\Framework\TestCase
 {
+    protected const LANGUAGE = 'uk';
+
     /** @var string */
     protected $token;
+
+    /** @var GoogleAutocomplete\Yii\Panels\Panel */
+    protected $panel;
 
     /** @var GoogleAutocomplete\Service */
     protected static $autoCompleteService;
@@ -25,12 +30,24 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass()
     {
+        putenv('GOOGLE_SERVICE_AUTOCOMPLETE_KEY=KEY');
         \Yii::$container = new Container();
+        static::injectGoogleAutocompleteService();
+        static::resetApplication();
+    }
 
+    protected static function injectGoogleAutocompleteService(): void
+    {
         \Yii::$container->set(GoogleAutocomplete\ConfigInterface::class, GoogleAutocomplete\EnvironmentConfig::class);
         \Yii::$container->set(GuzzleHttp\ClientInterface::class, GuzzleHttp\Client::class);
         \Yii::$container->set(GoogleAutocomplete\ServiceInterface::class, GoogleAutocomplete\Service::class);
+    }
 
+    /**
+     * @throws \yii\base\InvalidConfigException
+     */
+    protected static function resetApplication(): void
+    {
         \Yii::$app = new web\Application([
             'id' => 'yii-register-confirmation-test',
             'basePath' => dirname(__DIR__),
@@ -56,5 +73,12 @@ class TestCase extends \PHPUnit\Framework\TestCase
     protected function setUp()
     {
         $this->token = base64_encode(random_bytes(mt_rand(0, 255)));
+    }
+
+    protected function setQueryAttributes(array $attributes): void
+    {
+        foreach ($attributes as $key => $attribute) {
+            $_GET[$key] = $attribute;
+        }
     }
 }

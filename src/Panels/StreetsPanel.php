@@ -42,7 +42,7 @@ class StreetsPanel extends Panel
     {
         $locations = parent::generateResponse();
 
-        if (!is_null($this->type)) {
+        if (!is_null($this->type) && !empty($this->type)) {
             return preg_replace("/(\s*{$this->type}\s*)/iu", '', $locations);
         }
 
