@@ -20,13 +20,10 @@ class PanelTestCase extends \PHPUnit\Framework\TestCase
     /** @var string */
     protected $token;
 
-    /** @var array */
-    protected $expectedRules;
-
     /** @var GoogleAutocomplete\Service */
     protected static $autoCompleteService;
 
-    public function testValidate(): void
+    public function testSuccessValidate(): void
     {
         $this->setQueryAttributes([
             'input' => 'input',
@@ -35,9 +32,18 @@ class PanelTestCase extends \PHPUnit\Framework\TestCase
         $this->assertTrue($this->instancePanel()->validate());
     }
 
-    public function testRules(): void
+    public function testFailValidate(): void
     {
-        $this->assertEquals($this->expectedRules, $this->instancePanel()->rules());
+        $this->setQueryAttributes([
+            'input' => 'input',
+            'token' => null,
+        ]);
+        $panel = $this->instancePanel();
+
+        $this->assertFalse($panel->validate());
+        $errors = $panel->getErrors();
+        $this->assertArrayHasKey('token', $errors);
+        $this->assertNotEmpty($errors['token'][0]);
     }
 
     protected function instancePanel(): GoogleAutocomplete\Yii\Panels\Panel

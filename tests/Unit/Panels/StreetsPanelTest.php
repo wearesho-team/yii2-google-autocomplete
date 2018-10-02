@@ -19,35 +19,6 @@ class StreetsPanelTest extends PanelTestCase
     /** @var StreetsPanel */
     protected $panel;
 
-    protected function setUp()
-    {
-        parent::setUp();
-
-        $this->expectedRules = [
-            [
-                ['token', 'input',],
-                'required',
-            ],
-            [
-                ['token', 'input', 'language'],
-                'string',
-            ],
-            ['language', 'string', 'length' => 2,],
-            [
-                'language',
-                'default',
-                'value' => function (): string {
-                    return \Yii::$app->language;
-                },
-            ],
-            [
-                ['type', 'city',],
-                'string'
-            ],
-            ['type', 'filter', 'filter' => 'preg_quote'],
-        ];
-    }
-
     public function testFullResponse(): void
     {
         $this->mock($this->getSuccessResponse());

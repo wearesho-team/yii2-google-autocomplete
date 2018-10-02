@@ -15,30 +15,6 @@ class CitiesPanelTest extends PanelTestCase
 {
     protected const TESTED_PANEL = CitiesPanel::class;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->expectedRules = [
-            [
-                ['token', 'input',],
-                'required',
-            ],
-            [
-                ['token', 'input', 'language'],
-                'string',
-            ],
-            ['language', 'string', 'length' => 2,],
-            [
-                'language',
-                'default',
-                'value' => function (): string {
-                    return \Yii::$app->language;
-                },
-            ],
-        ];
-    }
-
     public function testFullResponse(): void
     {
         $this->mock($this->getSuccessResponse());
