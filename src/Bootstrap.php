@@ -2,6 +2,7 @@
 
 namespace Wearesho\GoogleAutocomplete\Yii;
 
+use GuzzleHttp;
 use Wearesho\GoogleAutocomplete;
 
 /**
@@ -22,6 +23,14 @@ class Bootstrap implements \yii\base\BootstrapInterface
         \Yii::$container->set(
             GoogleAutocomplete\ConfigInterface::class,
             GoogleAutocomplete\EnvironmentConfig::class
+        );
+        \Yii::$container->set(
+            GuzzleHttp\ClientInterface::class,
+            GuzzleHttp\Client::class
+        );
+        \Yii::$container->set(
+            GoogleAutocomplete\ServiceInterface::class,
+            GoogleAutocomplete\Service::class
         );
     }
 }
