@@ -2,7 +2,6 @@
 
 namespace Wearesho\GoogleAutocomplete\Yii\Tests\Unit;
 
-use GuzzleHttp;
 use PHPUnit\Framework\TestCase;
 use Wearesho\GoogleAutocomplete;
 use yii\web\Application;
