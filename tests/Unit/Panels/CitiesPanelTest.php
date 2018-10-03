@@ -19,12 +19,10 @@ class CitiesPanelTest extends PanelTestCase
     {
         $this->mock($this->getSuccessResponse());
         $this->setQueryAttributes([
-            'input' => 'input',
-            'token' => $this->token,
-            'city' => 'city',
-            'type' => 'type',
+            static::INPUT => 'input',
+            static::TOKEN => $this->token,
+            static::LANGUAGE => static::RUSSIAN,
         ]);
-        \Yii::$app->language = 'uk';
 
         $this->assertEquals('needle', $this->instancePanel()->getResponse()->data[0]);
     }
