@@ -1,4 +1,6 @@
 # Yii2 Google Autocomplete Api Integrate
+[![Build Status](https://travis-ci.org/wearesho-team/yii2-google-autocomplete.svg?branch=master)](https://travis-ci.org/wearesho-team/yii2-google-autocomplete)
+[![codecov](https://codecov.io/gh/wearesho-team/yii2-google-autocomplete/branch/master/graph/badge.svg)](https://codecov.io/gh/wearesho-team/yii2-google-autocomplete)
 
 ## Installation
 
