@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3c8609ee7f7dd726da44267fb31fc5b0",
+    "content-hash": "ed7d30de574a8cf611e57fd6a873a1d9",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -818,16 +818,16 @@
         },
         {
             "name": "wearesho-team/google-autocomplete",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wearesho-team/google-autocomplete.git",
-                "reference": "9d2517bfbe92e56ee890c87dc741e80610c1f865"
+                "reference": "855035f0dd909fff58fe9637b2d53363574b9c89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wearesho-team/google-autocomplete/zipball/9d2517bfbe92e56ee890c87dc741e80610c1f865",
-                "reference": "9d2517bfbe92e56ee890c87dc741e80610c1f865",
+                "url": "https://api.github.com/repos/wearesho-team/google-autocomplete/zipball/855035f0dd909fff58fe9637b2d53363574b9c89",
+                "reference": "855035f0dd909fff58fe9637b2d53363574b9c89",
                 "shasum": ""
             },
             "require": {
@@ -859,7 +859,7 @@
                 }
             ],
             "description": "Service for searching cities and streets using passed input value",
-            "time": "2018-10-01T11:27:13+00:00"
+            "time": "2018-10-03T08:05:41+00:00"
         },
         {
             "name": "wearesho-team/yii-http",
