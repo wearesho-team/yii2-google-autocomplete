@@ -4,7 +4,7 @@
     "type": "library",
     "require": {
         "php": ">7.1",
-        "wearesho-team/google-autocomplete": "^2.0",
+        "wearesho-team/google-autocomplete": "^2.1",
         "yiisoft/yii2": "^2.0.15",
         "wearesho-team/yii-http": "^1.12"
     },
