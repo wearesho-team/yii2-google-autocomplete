@@ -16,6 +16,9 @@ class StreetsPanelTest extends PanelTestCase
 {
     protected const TESTED_PANEL = StreetsPanel::class;
 
+    protected const CITY = 'city';
+    protected const TYPE = 'type';
+
     /** @var StreetsPanel */
     protected $panel;
 
@@ -23,24 +26,40 @@ class StreetsPanelTest extends PanelTestCase
     {
         $this->mock($this->getSuccessResponse());
         $this->setQueryAttributes([
-            'input' => 'input',
-            'token' => $this->token,
-            'city' => 'city',
-            'type' => 'type',
-            'language' => 'uk',
+            static::INPUT => 'value',
+            static::TOKEN => $this->token,
+            static::CITY => 'city',
+            static::TYPE => 'type',
+            static::LANGUAGE => static::RUSSIAN,
         ]);
         $this->assertEquals('needle', $this->instancePanel()->getResponse()->data[0]);
+    }
+
+    public function testCityValidate(): void
+    {
+        $this->setQueryAttributes([static::CITY => 'city']);
+        $this->assertTrue($this->instancePanel()->validate([static::CITY]));
+        $this->unsetQueryAttributes([static::CITY]);
+        $this->assertTrue($this->instancePanel()->validate([static::CITY]));
+    }
+
+    public function testTypeValidate(): void
+    {
+        $this->setQueryAttributes([static::TYPE => 'type']);
+        $this->assertTrue($this->instancePanel()->validate([static::TYPE]));
+        $this->unsetQueryAttributes([static::TYPE]);
+        $this->assertTrue($this->instancePanel()->validate([static::TYPE]));
     }
 
     public function testShortResponse(): void
     {
         $this->mock($this->getSuccessResponse());
         $this->setQueryAttributes([
-            'input' => 'input',
-            'token' => $this->token,
-            'language' => 'uk',
+            static::INPUT => 'input',
+            static::TOKEN => $this->token,
+            static::LANGUAGE => static::RUSSIAN,
         ]);
-        $this->unsetQueryAttributes(['type', 'city']);
+        $this->unsetQueryAttributes([static::TYPE, static::CITY]);
         $this->assertEquals('needle', $this->instancePanel()->getResponse()->data[0]);
     }
 
@@ -54,9 +73,9 @@ class StreetsPanelTest extends PanelTestCase
             new GuzzleHttp\Psr7\Request('GET', 'google.com', [])
         ));
         $this->setQueryAttributes([
-            'input' => 'input',
-            'token' => $this->token,
-            'language' => 'uk',
+            static::INPUT => 'input',
+            static::TOKEN => $this->token,
+            static::LANGUAGE => static::RUSSIAN,
         ]);
 
         $this->instancePanel()->getResponse();
