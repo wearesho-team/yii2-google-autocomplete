@@ -40,7 +40,6 @@ class BootstrapTest extends TestCase
 
     public function testInstantiateService(): void
     {
-        \Yii::$container->set(ClientInterface::class, Client::class);
         $this->assertInstanceOf(
             GoogleAutocomplete\Service::class,
             \Yii::$container->get(GoogleAutocomplete\ServiceInterface::class)
