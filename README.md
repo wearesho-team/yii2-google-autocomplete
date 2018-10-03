@@ -1,4 +1,12 @@
-# Yii2 Google autocomplete api integrate
+# Yii2 Google Autocomplete Api Integrate
+
+## Installation
+
+Use [composer](https://packagist.org) to install the package:
+
+```bash
+composer require wearesho-team/yii2-google-autocomplete
+```
 
 ## Usage
 
@@ -9,10 +17,12 @@ Add to your `common/config/main.php`:
 ```php
 <?php
 
+use Wearesho\GoogleAutocomplete;
+
 $config = [
     'bootstrap' => [
         'googleAutocomplete' => [
-            'class' => Wearesho\GoogleAutocomplete\Yii\Bootstrap::class
+            'class' => GoogleAutocomplete\Yii\Bootstrap::class
         ],
     ]
 ];
@@ -25,16 +35,18 @@ Add to your `api/config/main.php`:
 ```php
 <?php
 
+use Wearesho\GoogleAutocomplete;
+
 $module = [
     'controllerMap' => [
         'autocomplete' => [
-            'class' => \Wearesho\GoogleAutocomplete\Yii\Controller::class,
+            'class' => GoogleAutocomplete\Yii\Controller::class,
         ],
     ]
 ];
 ```
 
-## Authors
+## Contributors
 
 - [Roman <KartaviK> Varkuta](mailto:roman.varkuta@gmail.com)
 
