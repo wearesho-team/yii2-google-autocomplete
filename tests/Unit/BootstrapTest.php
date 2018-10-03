@@ -2,6 +2,7 @@
 
 namespace Wearesho\GoogleAutocomplete\Yii\Tests\Unit;
 
+use GuzzleHttp;
 use PHPUnit\Framework\TestCase;
 use Wearesho\GoogleAutocomplete;
 use yii\web\Application;
@@ -42,6 +43,14 @@ class BootstrapTest extends TestCase
         $this->assertInstanceOf(
             GoogleAutocomplete\Service::class,
             \Yii::$container->get(GoogleAutocomplete\ServiceInterface::class)
+        );
+    }
+
+    public function testGuzzleClientInstantiate(): void
+    {
+        $this->assertInstanceOf(
+            GuzzleHttp\Client::class,
+            \Yii::$container->get(GuzzleHttp\ClientInterface::class)
         );
     }
 }
