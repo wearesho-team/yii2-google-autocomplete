@@ -71,7 +71,6 @@ abstract class Panel extends Http\Panel
     /**
      * @return array
      * @throws GoogleAutocomplete\Exceptions\InvalidResponse
-     * @throws GoogleAutocomplete\Exceptions\QueryException
      * @throws HttpException
      */
     protected function generateResponse(): array
@@ -82,7 +81,19 @@ abstract class Panel extends Http\Panel
                 ->getResults()
                 ->jsonSerialize();
         } catch (GuzzleException $exception) {
-            throw new HttpException(503, 'Google autocomplete API is unavailable', $exception->getCode(), $exception);
+            throw new HttpException(
+                503,
+                'Google autocomplete API is unavailable',
+                1,
+                $exception
+            );
+        } catch (GoogleAutocomplete\Exceptions\QueryException $exception) {
+            throw new HttpException(
+                503,
+                "Google autocomplete API query error: " . $exception->getStatus(),
+                2,
+                $exception
+            );
         }
     }
 
