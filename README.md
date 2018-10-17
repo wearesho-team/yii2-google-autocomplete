@@ -51,7 +51,8 @@ $module = [
 ## Contributors
 
 - [Roman <KartaviK> Varkuta](mailto:roman.varkuta@gmail.com)
+- [Alexander <Horat1us> Letnikow](mailto:reclamme@gmail.com)
 
 ## License
 
-Unlicensed
+[MIT](./LICENSE)
