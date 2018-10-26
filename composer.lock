@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed7d30de574a8cf611e57fd6a873a1d9",
+    "content-hash": "6eefdfecf7ebe6b25a74cdcad6223e88",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -817,24 +817,65 @@
             "time": "2018-09-21T12:49:42+00:00"
         },
         {
-            "name": "wearesho-team/google-autocomplete",
-            "version": "2.1.0",
+            "name": "wearesho-team/base-collection",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/wearesho-team/google-autocomplete.git",
-                "reference": "855035f0dd909fff58fe9637b2d53363574b9c89"
+                "url": "https://github.com/wearesho-team/base-collection.git",
+                "reference": "34e629e71aca115cdb27c13b34e8c6cdd0bc5418"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wearesho-team/google-autocomplete/zipball/855035f0dd909fff58fe9637b2d53363574b9c89",
-                "reference": "855035f0dd909fff58fe9637b2d53363574b9c89",
+                "url": "https://api.github.com/repos/wearesho-team/base-collection/zipball/34e629e71aca115cdb27c13b34e8c6cdd0bc5418",
+                "reference": "34e629e71aca115cdb27c13b34e8c6cdd0bc5418",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.4",
+                "squizlabs/php_codesniffer": "^3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Wearesho\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Varkuta",
+                    "email": "roman.varkuta@gmail.com"
+                }
+            ],
+            "description": "Typed collection based on ArrayObject",
+            "time": "2018-10-19T12:17:38+00:00"
+        },
+        {
+            "name": "wearesho-team/google-autocomplete",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wearesho-team/google-autocomplete.git",
+                "reference": "9bd3045028831a3b8d950005f4ab92ecb1fd05f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wearesho-team/google-autocomplete/zipball/9bd3045028831a3b8d950005f4ab92ecb1fd05f3",
+                "reference": "9bd3045028831a3b8d950005f4ab92ecb1fd05f3",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.3",
                 "horat1us/environment-config": "^1.2",
                 "myclabs/php-enum": "^1.6",
-                "php": ">7.1"
+                "php": ">7.1",
+                "wearesho-team/base-collection": "^1.0.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^7.3",
@@ -859,7 +900,7 @@
                 }
             ],
             "description": "Service for searching cities and streets using passed input value",
-            "time": "2018-10-03T08:05:41+00:00"
+            "time": "2018-10-24T14:13:12+00:00"
         },
         {
             "name": "wearesho-team/yii-http",
