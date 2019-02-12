@@ -25,10 +25,6 @@ class Bootstrap implements \yii\base\BootstrapInterface
             GoogleAutocomplete\EnvironmentConfig::class
         );
         \Yii::$container->set(
-            GuzzleHttp\ClientInterface::class,
-            GuzzleHttp\Client::class
-        );
-        \Yii::$container->set(
             GoogleAutocomplete\ServiceInterface::class,
             GoogleAutocomplete\Service::class
         );
