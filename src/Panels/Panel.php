@@ -5,6 +5,7 @@ namespace Wearesho\GoogleAutocomplete\Yii\Panels;
 use Wearesho\GoogleAutocomplete;
 use Wearesho\Yii\Http;
 use yii\web\HttpException;
+use Horat1us\Environment\MissingEnvironmentException;
 use GuzzleHttp\Exception\GuzzleException;
 
 /**
@@ -92,6 +93,13 @@ abstract class Panel extends Http\Panel
                 503,
                 "Google autocomplete API query error: " . $exception->getStatus(),
                 2,
+                $exception
+            );
+        } catch (MissingEnvironmentException $exception) {
+            throw new HttpException(
+                503,
+                "Google autocomplete API is not configured",
+                3,
                 $exception
             );
         }
