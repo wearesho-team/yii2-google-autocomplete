@@ -3,6 +3,9 @@
 namespace Wearesho\GoogleAutocomplete\Yii\Tests\Unit\Panels;
 
 use GuzzleHttp;
+use Horat1us\Environment\MissingEnvironmentException;
+use PHPUnit\Framework\MockObject\MockObject;
+use Wearesho\GoogleAutocomplete\Service;
 use Wearesho\GoogleAutocomplete\Yii\Panels\StreetsPanel;
 use Wearesho\GoogleAutocomplete\Yii\Tests\PanelTestCase;
 
@@ -65,6 +68,8 @@ class StreetsPanelTest extends PanelTestCase
 
     /**
      * @expectedException \yii\web\HttpException
+     * @expectedExceptionMessage Google autocomplete API is unavailable
+     * @expectedExceptionCode 1
      */
     public function testUnavailableService(): void
     {
@@ -79,5 +84,35 @@ class StreetsPanelTest extends PanelTestCase
         ]);
 
         $this->instancePanel()->getResponse();
+    }
+
+    /**
+     * @expectedException \yii\web\HttpException
+     * @expectedExceptionMessage Google autocomplete API is not configured
+     * @expectedExceptionCode 3
+     */
+    public function testMissingEnvironment(): void
+    {
+        /** @var StreetsPanel $panel */
+        $panel = \Yii::$container->get(
+            static::TESTED_PANEL,
+            [
+                0 => $service = $this->createMock(Service::class),
+            ]
+        );
+
+        /** @var MockObject|Service $service */
+
+        $service->expects($this->once())
+            ->method('load')
+            ->will($this->throwException(new MissingEnvironmentException('ENV_KEY')));
+
+        $this->setQueryAttributes([
+            static::INPUT => 'input',
+            static::TOKEN => $this->token,
+            static::LANGUAGE => static::RUSSIAN,
+        ]);
+
+        $panel->getResponse();
     }
 }
